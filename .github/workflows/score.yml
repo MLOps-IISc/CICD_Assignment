@@ -1,12 +1,12 @@
 name: Check Minimum Score
 
-on :
+on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
     paths-ignore:
-      - 'data/**'
-      - 'requirements.txt'
-      - 'README.md'
+      - "data/**"
+      - "requirements.txt"
+      - "README.md"
 
 permissions:
   contents: read
@@ -27,8 +27,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Create model
-        run:
-          python train.py
+        run: python train.py
 
       - name: Test model
         run: |
