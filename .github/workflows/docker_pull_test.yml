@@ -1,7 +1,7 @@
 name: Docker Image Pull And Test
 
 on:
-  oworkflow_run:
+  workflow_run:
     workflows: ["Docker Image Build And Push"]
     types:
       - completed
