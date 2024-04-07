@@ -3,6 +3,11 @@ name: Docker Image Pull And Test
 on:
   workflow_run:
     workflows: ["Docker Image Build And Push"]
+    branches: [main]
+    paths-ignore:
+      - "data/**"
+      - "requirements.txt"
+      - "README.md"
     types:
       - completed
 
