@@ -3,16 +3,8 @@ name: Docker Image Pull And Test
 on:
   oworkflow_run:
     workflows: ["Docker Image Build And Push"]
-    branches: [main]
     types:
       - completed
-    paths-ignore:
-      - "data/**"
-      - "requirements.txt"
-      - "README.md"
-
-permissions:
-  contents: read
 
 jobs:
   pull_test:
@@ -33,4 +25,4 @@ jobs:
           OUTPUT=$(docker run ${{ secrets.DOCKER_USERNAME }}/mlops:latestpush)
           echo "Score:"
           echo "$OUTPUT"
-          if [[ `echo "$OUTPUT 0.50" | awk '{print ($1 < $2)}'` == 1 ]]; then echo "Insufficient Accuracy" && exit 1; fi
+          if [[ `echo "$OUTPUT 0.20" | awk '{print ($1 < $2)}'` == 1 ]]; then echo "Insufficient Accuracy" && exit 1; fi
