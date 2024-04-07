@@ -18,11 +18,11 @@ jobs:
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
       - name: Pull Docker Image
-        run: docker pull ${{ secrets.DOCKER_USERNAME }}/mlops:latestpush
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/mlops:latest
 
       - name: Test model
         run: |
-          OUTPUT=$(docker run ${{ secrets.DOCKER_USERNAME }}/mlops:latestpush)
+          OUTPUT=$(docker run ${{ secrets.DOCKER_USERNAME }}/mlops:latest)
           echo "Score:"
           echo "$OUTPUT"
           if [[ `echo "$OUTPUT 0.20" | awk '{print ($1 < $2)}'` == 1 ]]; then echo "Insufficient Accuracy" && exit 1; fi
