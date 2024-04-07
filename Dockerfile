@@ -1,14 +1,14 @@
 FROM python:3.12.2
 
-WORKDIR /repo/data
+WORKDIR /base/data
 
-COPY /data/test.csv /data/train.csv /repo/data/
+COPY /data/test.csv /data/train.csv /base/data/
 
-WORKDIR /repo
+WORKDIR /base
 
-COPY train.py test.py requirements.txt /repo/
+COPY train.py test.py requirements.txt /base/
 
-RUN pip install --no-cache-dir -r /repo/requirements.txt
+RUN pip install --no-cache-dir -r /base/requirements.txt
 
 RUN python train.py
 
