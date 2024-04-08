@@ -19,3 +19,4 @@ gm.fit(X, y_encoded)
 # save model
 with open("model.pkl", 'wb') as f:
     pickle.dump(gm, f)
+
