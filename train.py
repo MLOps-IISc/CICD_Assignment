@@ -18,6 +18,7 @@ with open("model.pkl", 'wb') as f:
 
 
 
+
 # m = GradientBoostingClassifier(max_depth = 4, n_estimators = 500, learning_rate = 0.05).fit(X,y)
 
 # with open("model.pkl", 'wb') as f:
