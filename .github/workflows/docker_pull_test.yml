@@ -4,7 +4,8 @@ on:
   workflow_run:
     workflows: ["Docker Image Build And Push"]
     branches: ["main"]
-
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
