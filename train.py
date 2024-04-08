@@ -1,21 +1,15 @@
-import pickle
 import pandas as pd
-from sklearn.naive_bayes import GaussianNB
-from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+import pickle
+import numpy as np
 
-# Read training data
 df = pd.read_csv("data/train.csv")
 X = df.drop(columns=['Disease']).to_numpy()
 y = df['Disease'].to_numpy()
+labels = np.sort(np.unique(y))
+y = np.array([np.where(labels == x) for x in y]).flatten()
 
-# To convert categorical variables
-label_encoder = LabelEncoder()
-y_encoded = label_encoder.fit_transform(y)
+model = LogisticRegression().fit(X, y)
 
-# Train model
-gm = GaussianNB()
-gm.fit(X, y_encoded)
-
-# save model
 with open("model.pkl", 'wb') as f:
-    pickle.dump(gm, f)
+    pickle.dump(model, f)
